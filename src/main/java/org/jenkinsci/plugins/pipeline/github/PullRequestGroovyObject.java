@@ -595,16 +595,17 @@ public class PullRequestGroovyObject extends GroovyObjectSupport implements Seri
     @Whitelisted
     public ReviewCommentGroovyObject reviewComment(final String commitId,
                                                    final String path,
-                                                   final int position,
+                                                   final int line,
                                                    final String body) {
         Objects.requireNonNull(commitId, "commitId is a required argument");
         Objects.requireNonNull(path, "path is a required argument");
+        Objects.requireNonNull(line, "line is a required argument");
         Objects.requireNonNull(body, "body is a required argument");
 
         ExtendedCommitComment comment = new ExtendedCommitComment();
         comment.setCommitId(commitId);
         comment.setPath(path);
-        comment.setPosition(position);
+        comment.setLine(line);
         comment.setBody(body);
         try {
             return new ReviewCommentGroovyObject(
